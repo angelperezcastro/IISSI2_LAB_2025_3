@@ -8,6 +8,7 @@ const initSequelize = async () => {
     port: databasePort,
     dialect: 'mariadb',
     dialectOptions: {
+      
       allowPublicKeyRetrieval: true
     }
     // logging: false

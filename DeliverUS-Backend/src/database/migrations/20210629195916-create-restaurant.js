@@ -6,8 +6,91 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      }
-      // TODO: Include the rest of the fields of the Restaurants table
+      },
+
+      restaurantCategoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'RestaurantCategories'
+          },
+          key: 'id'
+        }
+      },
+
+      name:{
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+
+      description:{
+        type: Sequelize.TEXT
+      },
+
+      address:{
+        type: Sequelize.STRING
+      },
+
+      postalCode:{
+        type:Sequelize.STRING
+      },
+
+      url:{
+        type:Sequelize.STRING
+      },
+
+      shippingCosts:{
+        type:Sequelize.DOUBLE
+      },
+
+      averageServiceMinutes:{
+        type:Sequelize.DOUBLE
+      },
+
+      email:{
+        type:Sequelize.STRING
+      },
+
+      phone:{
+        type:Sequelize.STRING
+      },
+
+      logo:{
+        type:Sequelize.STRING
+      },
+
+      heroImage:{
+        type:Sequelize.STRING
+      },
+
+      createdAt:{
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: new Date()
+      },
+
+      updatedAt:{
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: new Date()
+      },
+
+      status:{
+        type:Sequelize.ENUM('online', 'offline', 'closed', 'temporarily closed')
+      },
+
+      userId:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references:{
+          model:{
+            tableName: 'Users'
+          },
+          key: 'id'
+        },
+        onDelete: 'cascade'
+      },
+
 
     })
   },
